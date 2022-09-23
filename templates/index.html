@@ -21,6 +21,36 @@
         background: #555; 
     }
 
+    .hamb{
+        display: flex;
+        justify-content: end;
+        background-color: #38444d;
+    }
+    .wcontainer {
+        margin: 10px;
+        display: none;
+        cursor: pointer;
+        
+    }
+
+    .bar1, .bar2, .bar3 {
+        width: 35px;
+        height: 5px;
+        background-color: white;
+        margin: 6px 0;
+        transition: 0.4s;
+    }
+
+    .change .bar1 {
+        transform: translate(0, 11px) rotate(-45deg);
+    }
+
+    .change .bar2 {opacity: 0;}
+
+    .change .bar3 {
+        transform: translate(0, -11px) rotate(45deg);
+    }
+
     body {
         background-color:white;
         margin: 0;
@@ -35,6 +65,9 @@
 
     li {
         float: left;
+    }
+    .liright{
+        float: right;
     }
 
     li a, .dropbtn {
@@ -168,6 +201,25 @@
         padding: 7px;
         margin: 10px;
     }
+    @media only screen and (max-width: 850px) {
+        .outer {
+            display : block;
+        }
+        li,.liright{
+            float : none;
+            border-top: 1px solid white;
+        }
+        li,li a,.dropbtn{
+            width: 100%;
+            text-align: left;
+        }
+        .wcontainer{
+            display: inline-block;
+        }
+        ul{
+            display: none;
+        }
+    }
   </style>
   <body>
     <div id="myModal" class="modal">
@@ -179,6 +231,11 @@
         </div>
       
     </div>
+    <div class="hamb"><div class="wcontainer" onclick="myFunction(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div></div>
     <ul>
         <li><a href=".">Home</a></li>
         <li><a onclick="modalOpen('classification')" href="#">Positive vs Negative</a></li>
@@ -197,7 +254,7 @@
         </li>
         <li><a onclick="modalOpen('missing')" href="#">Missing Values</a></li>
         <li><a onclick="modalOpen('models')" href="#">Model Comparison</a></li>
-        <li style="float: right;"><a href="mailto:harshitsma2011@gmail.com">Contact</a></li>
+        <li class="liright"><a href="mailto:harshitsma2011@gmail.com">Contact</a></li>
       </ul>
     <h1>Diabetes Predictor</h1>
     <form name="form", method="POST">
@@ -271,6 +328,12 @@
             document.getElementById('img').src = "../static/"+text+".png"
             document.getElementById('modalText').innerText = textObj[text]
             modal.style.display = "block";
+        }
+        function myFunction(x) {
+            x.classList.toggle("change");
+            const list = document.getElementsByTagName("ul")[0]
+            if(list.style.display=="none"||list.style.display=="")list.style.display = "block";
+            else list.style.display = "none";
         }
     </script>
   </body>
