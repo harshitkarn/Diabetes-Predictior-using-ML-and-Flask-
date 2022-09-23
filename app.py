@@ -44,7 +44,7 @@ def main():
         op = ""
         percent_str = ''
         
-    return render_template("website.html", output = op, percent = percent_str)
+    return render_template("index.html", output = op, percent = percent_str)
 
 # Running the app
 if __name__ == '__main__':
